@@ -1,0 +1,26 @@
+{
+    "name": "test-bluez-devcontainer",
+    "version": "0.1.0",
+    "description": "Simple bluetooth low energy app in node",
+    "main": "main.js",
+    "scripts": {
+      "start": "node dist/main.js",
+      "build": "tsc",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "init": "tsc --init"
+    },
+    "author": "Rafael Esposito",
+    "license": "ISC",
+    "dependencies": {
+      "dotenv": "^16.0.3",
+      "lowdb": "^5.1.0",
+      "node-ble": "https://github.com/arolgroup/node-ble.git",
+      "rxjs": "^7.8.0",
+      "winston": "^3.8.2",
+      "winston-daily-rotate-file": "^4.7.1"
+    },
+    "devDependencies": {
+      "@types/node": "^18.11.18",
+      "typescript": "^4.9.4"
+    }
+  }
