@@ -10,6 +10,14 @@ RUN apt-get install -y \
     bluez \
     libbluetooth-dev \
     libudev-dev 
+
+# COPY ./bluezuser.conf /etc/dbus-1/system.d/
+
+RUN useradd -m bluezuser -s /bin/bash \
+ && adduser bluezuser sudo \
+ && passwd -d bluezuser
+USER bluezuser
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -24,13 +32,6 @@ WORKDIR /usr/src/app
 
 # Bundle app source
 COPY . .
-
-# COPY ./bluezuser.conf /etc/dbus-1/system.d/
-
-RUN useradd -m bluezuser -s /bin/bash \
- && adduser bluezuser sudo \
- && passwd -d bluezuser
-USER bluezuser
 
 # setup startup script
 # COPY docker-entrypoint.sh .
