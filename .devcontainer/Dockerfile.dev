@@ -11,7 +11,7 @@ RUN apt-get install -y \
     libbluetooth-dev \
     libudev-dev 
 
-# COPY ./bluezuser.conf /etc/dbus-1/system.d/
+COPY ./bluezuser.conf /etc/dbus-1/system.d/
 
 RUN useradd -m bluezuser -s /bin/bash \
  && adduser bluezuser sudo \
