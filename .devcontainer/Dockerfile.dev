@@ -16,6 +16,7 @@ RUN apt-get install -y \
 RUN useradd -m bluezuser -s /bin/bash \
  && adduser bluezuser sudo \
  && passwd -d bluezuser
+RUN sh -c "echo \"bluezuser ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
 USER bluezuser
 
 # Create app directory
