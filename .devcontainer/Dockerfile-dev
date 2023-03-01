@@ -1,0 +1,40 @@
+FROM node:16
+# install bluez related packages
+RUN apt-get update && apt-get install -y \
+    bluetooth \
+    dbus \
+    sudo
+
+RUN apt-get install -y \
+    bluez \
+    libbluetooth-dev \
+    libudev-dev 
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+# COPY package*.json ./
+
+# RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
+
+# Bundle app source
+COPY . .
+
+# COPY ./bluezuser.conf /etc/dbus-1/system.d/
+
+RUN useradd -m bluezuser -s /bin/bash \
+ && adduser bluezuser sudo \
+ && passwd -d bluezuser
+USER bluezuser
+
+# setup startup script
+# COPY docker-entrypoint.sh .
+# ENTRYPOINT ["./docker-entrypoint.sh"]
+# CMD ./docker-entrypoint.sh
+
+CMD ["bash"]
+# CMD [ "node", "server.js" ]
