@@ -14,7 +14,7 @@
 		"--network", "host",
 		"--cap-add=SYS_ADMIN",
 		"--cap-add=NET_ADMIN"
-	]
+	],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -24,6 +24,13 @@
 
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "cat /etc/os-release",
+
+	"postStartCommand": "sudo service dbus start && sudo service bluetooth start && echo 'IMPORTANT: Make sure that bluetooth service is not running on the host'"
+	// "postStartCommand": [
+		// 	"sudo", "service", "dbus", "start", "&&",
+		// 	"sudo", "service", "bluetooth", "start", "&&",
+		// 	"echo", "*** IMPORTANT ***: Execute on the host: 'sudo service bluetooth stop'"
+	// ]
 
 	// Configure tool-specific properties.
 	// "customizations": {},
