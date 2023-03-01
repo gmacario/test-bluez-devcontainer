@@ -11,7 +11,7 @@
 
 	"runArgs": [
 		"--privileged",
-		// "--net=host",
+		"--network", "host",
 		"--cap-add=SYS_ADMIN",
 		"--cap-add=NET_ADMIN"
 	]
